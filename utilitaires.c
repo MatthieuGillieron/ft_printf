@@ -6,7 +6,7 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 13:08:13 by mg                #+#    #+#             */
-/*   Updated: 2024/10/08 11:08:43 by mg               ###   ########.fr       */
+/*   Updated: 2024/10/08 15:19:33 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	ft_putchar(int c)
 	write(1, &c, 1);
 }
 
-void	ft_putstr_opti(char *str)
+int	ft_putstr_opti(char *str)
 {
 	int	len;
-	len= 0;
+
+	len = 0;
 	while (str[len])
 		len++;
 	write (1, str, len);
+	return (len);
 }

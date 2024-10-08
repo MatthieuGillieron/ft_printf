@@ -6,23 +6,28 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:10:05 by mg                #+#    #+#             */
-/*   Updated: 2024/09/26 19:36:09 by mg               ###   ########.fr       */
+/*   Updated: 2024/10/08 15:19:38 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_unsigned(unsigned int nb)
+int	ft_print_unsigned(unsigned int nb)
 {
+	int count = 0;
+
 	if (nb > 9)
-		ft_print_unsigned(nb / 10);
-	ft_putchar((nb % 10) + '0');
+		count += ft_print_unsigned(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
+	return (count);
 }
 
-
-void ft_print_adresse(void *ptr)
+int	ft_print_adresse(void *ptr)
 {
 	unsigned long adresse = (unsigned long)ptr;
-	ft_putstr_opti("0x");
-	ft_print_hex_min(adresse);
+	int count = 0;
+
+	count += ft_putstr_opti("0x");
+	count += ft_print_hex_min(adresse);
+	return (count);
 }

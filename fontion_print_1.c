@@ -6,74 +6,82 @@
 /*   By: mg <mg@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 19:00:42 by mg                #+#    #+#             */
-/*   Updated: 2024/10/03 09:06:38 by mg               ###   ########.fr       */
+/*   Updated: 2024/10/08 15:12:31 by mg               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_print_char(int c)
+int	ft_print_char(int c)
 {
 	ft_putchar(c);
+	return (1);
 }
 
 
 
 
-void	ft_print_str(char *str)
+
+int	ft_print_str(char *str)
 {
 	int len;
 	len = 0;
 	while (str[len])
 		len++;
 	write (1, str, len);
+	return (len);
 }
 
 
 
 
 
-void	ft_print_digit(int nb)
+int	ft_print_digit(int nb)
 {
+	int count;
+
+	count = 0;
 	if (nb == -2147483648)
 	{
-		write (1, "-2147483648", 11);
-		return ;
+		write(1, "-2147483648", 11);
+		return (11);
 	}
 	if (nb < 0)
 	{
-		write (1, '-', 1);
+		count += ft_putchar('-');
 		nb = -nb;
 	}
 	if (nb > 9)
-		ft_putnbr(nb / 10);
-	ft_putchar(nb % 10 + '0');
+		count += ft_print_digit(nb / 10);
+	count += ft_putchar((nb % 10) + '0');
+	return (count);
 }
 
 
 
 
-void ft_print_hex_min(unsigned int num)
+int	ft_print_hex_min(unsigned int num)
 {
+	int count = 0;
+	char *hex_digits = "0123456789abcdef";
+
 	if (num >= 16)
-		ft_print_hex_lower(num / 16);
-	int reste = num % 16;
-	if (reste < 10)
-		ft_putchar(reste + '0');
-	else
-		ft_putchar(reste - 10 + 'a');
+		count += ft_print_hex_min(num / 16);
+	count += ft_putchar(hex_digits[num % 16]);
+	return (count);
 }
 
 
 
 
-void ft_print_hex_maj(unsigned int num)
+
+int	ft_print_hex_maj(unsigned int num)
 {
+	int count = 0;
+	char *hex_digits = "0123456789ABCDEF";
+
 	if (num >= 16)
-		ft_print_hex_maj(num / 16);
-	int reste = num % 16;
-	if (reste < 10)
-		ft_putchar(reste + '0');
-	else
-		ft_putchar(reste - 10 + 'A');
+		count += ft_print_hex_maj(num / 16);
+	count += ft_putchar(hex_digits[num % 16]);
+	return (count);
 }
