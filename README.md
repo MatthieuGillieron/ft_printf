@@ -1,6 +1,6 @@
 # ft_printf - Projet 42
 
-Le projet **ft_printf** à l'école [42](https://42.fr/) consiste à réimplémenter la fonction standard `printf` du langage C. Ce projet demande de gérer divers spécificateurs de format et les arguments variadiques, couvrant plusieurs domaines, notamment :
+Le projet **ft_printf** consiste à réimplémenter la fonction standard `printf` du langage C. Ce projet demande de gérer divers spécificateurs de format et les arguments variadiques, couvrant plusieurs domaines, notamment :
 
 - **Spécificateurs de base** : `%c`, `%s`, `%p`, `%d`, `%i`, `%u`, `%x`, `%X`, `%%`
 - **Flags** : `-`, `0`, `#`, (espace), `+`
