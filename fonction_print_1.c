@@ -18,27 +18,25 @@ int	ft_print_char(int c)
 	return (1);
 }
 
-
-
-
-
 int	ft_print_str(char *str)
 {
-	int len;
+	int	len;
+
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
 	len = 0;
 	while (str[len])
 		len++;
-	write (1, str, len);
+	write(1, str, len);
 	return (len);
 }
 
-
-
-
-
 int	ft_print_digit(int nb)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	if (nb == -2147483648)
@@ -57,29 +55,26 @@ int	ft_print_digit(int nb)
 	return (count);
 }
 
-
-
-
-int	ft_print_hex_min(unsigned int num)
+int	ft_print_hex_min(unsigned long num)
 {
-	int count = 0;
-	char *hex_digits = "0123456789abcdef";
+	int		count;
+	char	*hex_digits;
 
+	count = 0;
+	hex_digits = "0123456789abcdef";
 	if (num >= 16)
 		count += ft_print_hex_min(num / 16);
 	count += ft_putchar(hex_digits[num % 16]);
 	return (count);
 }
 
-
-
-
-
-int	ft_print_hex_maj(unsigned int num)
+int	ft_print_hex_maj(unsigned long num)
 {
-	int count = 0;
-	char *hex_digits = "0123456789ABCDEF";
+	int		count;
+	char	*hex_digits;
 
+	count = 0;
+	hex_digits = "0123456789ABCDEF";
 	if (num >= 16)
 		count += ft_print_hex_maj(num / 16);
 	count += ft_putchar(hex_digits[num % 16]);

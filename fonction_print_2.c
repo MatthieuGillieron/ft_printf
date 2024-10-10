@@ -14,8 +14,9 @@
 
 int	ft_print_unsigned(unsigned int nb)
 {
-	int count = 0;
+	int	count;
 
+	count = 0;
 	if (nb > 9)
 		count += ft_print_unsigned(nb / 10);
 	count += ft_putchar((nb % 10) + '0');
@@ -24,9 +25,11 @@ int	ft_print_unsigned(unsigned int nb)
 
 int	ft_print_adresse(void *ptr)
 {
-	unsigned long adresse = (unsigned long)ptr;
-	int count = 0;
+	unsigned long	adresse;
+	int				count;
 
+	adresse = (unsigned long)ptr;
+	count = 0;
 	count += ft_putstr_opti("0x");
 	count += ft_print_hex_min(adresse);
 	return (count);

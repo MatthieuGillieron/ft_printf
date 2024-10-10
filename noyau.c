@@ -15,7 +15,7 @@
 int	ft_check_string(const char *type, va_list ap)
 {
 	int	i;
-	int count_char;
+	int	count_char;
 
 	i = 0;
 	count_char = 0;
@@ -23,7 +23,7 @@ int	ft_check_string(const char *type, va_list ap)
 	{
 		if (type[i] == '%' && type[i + 1])
 		{
-			count_char += ft_type_trouver(&type[i + 1], ap); 
+			count_char += ft_type_trouver(&type[i + 1], ap);
 			i += 2;
 		}
 		else
@@ -36,11 +36,10 @@ int	ft_check_string(const char *type, va_list ap)
 	return (count_char);
 }
 
-
 int	ft_type_trouver(const char *type, va_list ap)
 {
-	int count;
-	
+	int	count;
+
 	count = 0;
 	if (*type == '%')
 		count += ft_print_char('%');
@@ -59,18 +58,18 @@ int	ft_type_trouver(const char *type, va_list ap)
 	else if (*type == 'p')
 		count += ft_print_adresse(va_arg(ap, void *));
 	else
-		return 0;
+		return (0);
 	return (count);
 }
 
-
-
-int ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
-    va_list ap;
-    va_start(ap, format);
-	int	count_char = 0;
-    count_char = ft_check_string(format, ap);
-    va_end(ap);
-    return count_char;
+	int		count_char;
+	va_list	ap;
+
+	va_start(ap, format);
+	count_char = 0;
+	count_char = ft_check_string(format, ap);
+	va_end(ap);
+	return (count_char);
 }
