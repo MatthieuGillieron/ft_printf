@@ -1,4 +1,4 @@
-# FT_PRINTF
+# FT_PRINTF - Projet 42
 
 Le projet **ft_printf** consiste à réimplémenter la fonction standard `printf` du langage C. Ce projet demande de gérer divers spécificateurs de format et les arguments variadiques, couvrant plusieurs domaines, notamment :
 
